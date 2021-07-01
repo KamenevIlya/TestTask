@@ -4,7 +4,7 @@ namespace OrdersBL.Model
 {
     public class OrdersContext :DbContext
     {
-        public OrdersContext() : base("CRMConnection") { }
+        public OrdersContext() : base("OrdersConnection") { }
 
         public DbSet<Check> Checks { get; set; }
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OrdersBL.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +13,26 @@ namespace OrdersUI
 {
     public partial class LogInForm : Form
     {
+        public Customer Customer { get; set; }
+
         public LogInForm()
         {
             InitializeComponent();
+        }
+        
+        
+        private void closeButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void logInButton_Click(object sender, EventArgs e)
+        {
+            Customer = new Customer()
+            {
+                Name = textBox1.Text,
+            };
+            DialogResult = DialogResult.OK;
         }
     }
 }
