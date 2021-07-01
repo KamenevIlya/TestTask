@@ -8,7 +8,7 @@ namespace OrdersBL.Model
 
         public string Name { get; set; }
 
-        public virtual ICollection<Check> Checks { get; set; } //Связь 1 ко многим 
+        public virtual ICollection<Check> Checks { get; set; } 
 
         public override string ToString()
         {

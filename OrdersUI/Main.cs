@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,46 +10,22 @@ namespace OrdersUI
 {
     public partial class Main : Form
     {
-        OrdersContext db;
-        Cart cart;
-        Customer customer;
+        private OrdersContext db;
+        private Cart cart;
+        private Seller seller;
+        private Customer customer;
+        private List<Product> ChosenProducts;
 
         public Main()
         {
             InitializeComponent();
             db = new OrdersContext();
             cart = new Cart(customer);
+            seller = new Seller();
+            ChosenProducts = new List<Product>();
+            comboBox1.Items.AddRange(db.Sellers.ToArray());
         }
-
-        private void logInLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            LogInForm logInForm = new LogInForm();
-            logInForm.ShowDialog();
-            if (logInForm.DialogResult == DialogResult.OK)
-            {
-                var tempCustomer = db.Customers.FirstOrDefault(c => c.Name.Equals(logInForm.Customer.Name));
-                if (tempCustomer != null)
-                {
-                    customer = tempCustomer;
-                }
-                else
-                {
-                    db.Customers.Add(logInForm.Customer);
-                    db.SaveChanges();
-                    customer = logInForm.Customer;
-                }
-                cart.Customer = customer;
-            }
-            if (customer != null)
-            {
-                logInLabel2.Text = $"Добро пожаловать, {customer.Name}!";
-                logInLabel2.Location = new Point()
-                {
-                    X = this.Width - logInLabel2.Width - 30,
-                    Y = 38
-                };
-            }
-        }
+        
 
         
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -96,45 +73,32 @@ namespace OrdersUI
 
         private void Main_Load(object sender, EventArgs e)
         {
-            Task.Run(() =>
-            {
-                listBox1?.Invoke((Action)delegate
-                {
-                    listBox1.Items.AddRange(db.Products.ToArray());
-                    UpdateLists();
-                });
-            });
+            
         }
 
-        private void UpdateLists()
+        
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            listBox2.Items.Clear();
-            listBox2.Items.AddRange(cart.GetAll().ToArray());
-            label1.Text = $"Итого: {cart.Amount}";
+            seller.Name = comboBox1.SelectedItem.ToString();
+        }
+
+        private void productsChoosingButton_Click(object sender, EventArgs e)
+        {
+            ProductChoosingForm productChoosingForm = new ProductChoosingForm();
+            if (productChoosingForm.ShowDialog() == DialogResult.OK)
+            {
+                List<Product> products = new List<Product>();
+                products = productChoosingForm.Cart.GetAll();
+                foreach (var product in products)
+                {
+                    ChosenProducts.Add(product);
+                }
+            }
         }
 
         private void payButton_Click(object sender, EventArgs e)
         {
-            if (customer != null)
-            {
-                listBox2.Items.Clear();
-                cart = new Cart(customer);
-                MessageBox.Show("Сумма: " + cart.Amount, "Покупка выполнена успешна!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                MessageBox.Show($"Авторизуйтесь пожалуйста!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
 
-        private void listBox1_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            if (listBox1.SelectedItem is Product product)
-            {
-                cart.Add(product);
-                listBox2.Items.Add(product);
-                UpdateLists();
-            }
         }
     }
 }

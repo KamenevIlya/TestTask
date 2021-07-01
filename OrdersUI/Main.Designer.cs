@@ -33,16 +33,13 @@ namespace OrdersUI
             this.сущностиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sellersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ordersLogЗаказовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.logInLabel2 = new System.Windows.Forms.LinkLabel();
             this.productsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.listBox2 = new System.Windows.Forms.ListBox();
-            this.payButton = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.addProductToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addSellerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.productsChoosingButton = new System.Windows.Forms.Button();
+            this.payButton = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -65,7 +62,7 @@ namespace OrdersUI
             this.ordersLogЗаказовToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.сущностиToolStripMenuItem.Name = "сущностиToolStripMenuItem";
-            this.сущностиToolStripMenuItem.Size = new System.Drawing.Size(80, 26);
+            this.сущностиToolStripMenuItem.Size = new System.Drawing.Size(80, 21);
             this.сущностиToolStripMenuItem.Text = "Сущности";
             // 
             // sellersToolStripMenuItem
@@ -84,18 +81,6 @@ namespace OrdersUI
             this.ordersLogЗаказовToolStripMenuItem.Text = "История заказов";
             this.ordersLogЗаказовToolStripMenuItem.Click += new System.EventHandler(this.OrdersLogToolStripMenuItem_Click);
             // 
-            // logInLabel2
-            // 
-            this.logInLabel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.logInLabel2.AutoSize = true;
-            this.logInLabel2.Location = new System.Drawing.Point(499, 37);
-            this.logInLabel2.Name = "logInLabel2";
-            this.logInLabel2.Size = new System.Drawing.Size(94, 17);
-            this.logInLabel2.TabIndex = 6;
-            this.logInLabel2.TabStop = true;
-            this.logInLabel2.Text = "Авторизация";
-            this.logInLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.logInLabel2_LinkClicked);
-            // 
             // productsToolStripMenuItem1
             // 
             this.productsToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -112,45 +97,6 @@ namespace OrdersUI
             this.exitToolStripMenuItem.Text = "Выход";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
-            // listBox1
-            // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 16;
-            this.listBox1.Location = new System.Drawing.Point(12, 70);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(265, 468);
-            this.listBox1.TabIndex = 8;
-            this.listBox1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listBox1_MouseDoubleClick);
-            // 
-            // listBox2
-            // 
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.ItemHeight = 16;
-            this.listBox2.Location = new System.Drawing.Point(328, 70);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(265, 372);
-            this.listBox2.TabIndex = 9;
-            // 
-            // payButton
-            // 
-            this.payButton.Location = new System.Drawing.Point(328, 498);
-            this.payButton.Name = "payButton";
-            this.payButton.Size = new System.Drawing.Size(265, 40);
-            this.payButton.TabIndex = 11;
-            this.payButton.Text = "Оплатить";
-            this.payButton.UseVisualStyleBackColor = true;
-            this.payButton.Click += new System.EventHandler(this.payButton_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(325, 470);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(79, 25);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "Итого: ";
-            // 
             // addProductToolStripMenuItem
             // 
             this.addProductToolStripMenuItem.Name = "addProductToolStripMenuItem";
@@ -165,24 +111,45 @@ namespace OrdersUI
             this.addSellerToolStripMenuItem.Text = "Добавить";
             this.addSellerToolStripMenuItem.Click += new System.EventHandler(this.addSellerToolStripMenuItem_Click);
             // 
-            // textBox1
+            // comboBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 34);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(265, 22);
-            this.textBox1.TabIndex = 12;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(12, 84);
+            this.comboBox1.MaxDropDownItems = 100;
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(157, 24);
+            this.comboBox1.TabIndex = 13;
+            this.comboBox1.Text = "Выберите продавца";
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
+            // productsChoosingButton
+            // 
+            this.productsChoosingButton.Location = new System.Drawing.Point(12, 156);
+            this.productsChoosingButton.Name = "productsChoosingButton";
+            this.productsChoosingButton.Size = new System.Drawing.Size(176, 59);
+            this.productsChoosingButton.TabIndex = 14;
+            this.productsChoosingButton.Text = "Выбрать товары";
+            this.productsChoosingButton.UseVisualStyleBackColor = true;
+            this.productsChoosingButton.Click += new System.EventHandler(this.productsChoosingButton_Click);
+            // 
+            // payButton
+            // 
+            this.payButton.Location = new System.Drawing.Point(338, 498);
+            this.payButton.Name = "payButton";
+            this.payButton.Size = new System.Drawing.Size(265, 40);
+            this.payButton.TabIndex = 15;
+            this.payButton.Text = "Оформить заказ";
+            this.payButton.UseVisualStyleBackColor = true;
+            this.payButton.Click += new System.EventHandler(this.payButton_Click);
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(615, 550);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.payButton);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.listBox2);
-            this.Controls.Add(this.listBox1);
-            this.Controls.Add(this.logInLabel2);
+            this.Controls.Add(this.productsChoosingButton);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Main";
@@ -201,16 +168,13 @@ namespace OrdersUI
         private System.Windows.Forms.ToolStripMenuItem сущностиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sellersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ordersLogЗаказовToolStripMenuItem;
-        private System.Windows.Forms.LinkLabel logInLabel2;
         private System.Windows.Forms.ToolStripMenuItem productsToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private System.Windows.Forms.ListBox listBox1;
-        private System.Windows.Forms.ListBox listBox2;
-        private System.Windows.Forms.Button payButton;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ToolStripMenuItem addProductToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addSellerToolStripMenuItem;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button productsChoosingButton;
+        private System.Windows.Forms.Button payButton;
     }
 }
 
