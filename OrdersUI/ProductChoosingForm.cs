@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using OrdersBL.Model;
+using System.Text.RegularExpressions;
 
 namespace OrdersUI
 {
@@ -48,6 +49,11 @@ namespace OrdersUI
 
         private void ProductChoosingForm_Load(object sender, EventArgs e)
         {
+            LoadAllProducts();
+        }
+
+        private void LoadAllProducts()
+        {
             Task.Run(() =>
             {
                 listBox1?.Invoke((Action)delegate
@@ -56,6 +62,26 @@ namespace OrdersUI
                     UpdateLists();
                 });
             });
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            listBox1.Items.Clear();
+            if (textBox1.Text=="")
+            {
+                LoadAllProducts();
+            }
+            else
+            {
+                Task.Run(() =>
+                {
+                    listBox1?.Invoke((Action)delegate
+                    {
+                        listBox1.Items.AddRange(db.Products.Where(p => p.Name.ToUpper().StartsWith(textBox1.Text.ToUpper())).ToArray());
+                        UpdateLists();
+                    });
+                });
+            }
         }
     }
 }

@@ -33,6 +33,7 @@ namespace OrdersUI
             this.listBox2 = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.payButton = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // listBox1
@@ -74,11 +75,20 @@ namespace OrdersUI
             this.payButton.UseVisualStyleBackColor = true;
             this.payButton.Click += new System.EventHandler(this.payButton_Click);
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(12, 23);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(265, 22);
+            this.textBox1.TabIndex = 13;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
             // ProductChoosingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(643, 549);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.payButton);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.listBox2);
@@ -97,5 +107,6 @@ namespace OrdersUI
         private System.Windows.Forms.ListBox listBox2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button payButton;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

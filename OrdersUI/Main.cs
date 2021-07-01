@@ -14,6 +14,8 @@ namespace OrdersUI
         private Cart cart;
         private Seller seller;
         private Customer customer;
+        private Check check;
+        private Sell sell;
         private List<Product> ChosenProducts;
 
         public Main()
@@ -22,6 +24,8 @@ namespace OrdersUI
             db = new OrdersContext();
             cart = new Cart(customer);
             seller = new Seller();
+            check = new Check();
+            sell = new Sell();
             ChosenProducts = new List<Product>();
             comboBox1.Items.AddRange(db.Sellers.ToArray());
         }
@@ -80,6 +84,8 @@ namespace OrdersUI
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             seller.Name = comboBox1.SelectedItem.ToString();
+            check.Seller = seller;
+            sell.Check = check;
         }
 
         private void productsChoosingButton_Click(object sender, EventArgs e)
