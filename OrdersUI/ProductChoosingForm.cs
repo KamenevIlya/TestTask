@@ -11,11 +11,10 @@ namespace OrdersUI
     public partial class ProductChoosingForm : Form
     {
         OrdersContext db;
-        Customer customer;
         
         public Cart Cart { get; set; }
 
-        public ProductChoosingForm()
+        public ProductChoosingForm(Customer customer)
         {
             InitializeComponent();
             db = new OrdersContext();
@@ -26,7 +25,6 @@ namespace OrdersUI
         {
             listBox2.Items.Clear();
             MessageBox.Show("Сумма: " + Cart.Amount, "Товары выбраны успешно!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            Cart = new Cart(customer);
             this.Close();
         }
 
