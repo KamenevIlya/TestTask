@@ -61,7 +61,6 @@
     <Compile Include="Model\OrdersContext.cs" />
     <Compile Include="Model\Check.cs" />
     <Compile Include="Model\Product.cs" />
-    <Compile Include="Model\Sell.cs" />
     <Compile Include="Model\Selles.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

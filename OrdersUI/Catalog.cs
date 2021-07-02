@@ -20,6 +20,21 @@ namespace OrdersUI
             this.set = set;
             set.Load();
             dataGridView.DataSource = set.Local.ToBindingList();
+            ShowButtons();
+        }
+
+        public void HideButtons()
+        {
+            addButton.Visible = false;
+            changeButton.Visible = false;
+            deleteButton.Visible = false;
+        }
+
+        private void ShowButtons()
+        {
+            addButton.Visible = true;
+            changeButton.Visible = true;
+            deleteButton.Visible = true;
         }
 
         private void AddButton_Click(object sender, EventArgs e)

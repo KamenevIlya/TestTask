@@ -14,7 +14,6 @@ namespace OrdersUI
         private Cart cart;
         private Seller seller;
         private Customer customer;
-        private Sell sell;
         private List<Product> chosenProducts;
 
         public Main()
@@ -23,7 +22,6 @@ namespace OrdersUI
             db = new OrdersContext();
             cart = new Cart(customer);
             seller = new Seller();
-            sell = new Sell();
             chosenProducts = new List<Product>();
             comboBox1.Items.AddRange(db.Sellers.ToArray());
         }
@@ -50,6 +48,7 @@ namespace OrdersUI
         private void OrdersLogToolStripMenuItem_Click(object sender, EventArgs e)
         {
             var catalogCheck = new Catalog<Check>(db.Checks, db);
+            catalogCheck.HideButtons();
             catalogCheck.Show();
         }
 

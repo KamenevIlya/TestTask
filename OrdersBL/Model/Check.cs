@@ -17,8 +17,6 @@ namespace OrdersBL.Model
 
         public DateTime Created { get; set; }
 
-        public ICollection<Sell> Sells { get; set; }
-
         public decimal Amount { get; set; }
 
         public override string ToString()

@@ -12,8 +12,6 @@ namespace OrdersBL.Model
 
         public DbSet<Product> Products { get; set; }
 
-        public DbSet<Sell> Sells { get; set; }
-
         public DbSet<Seller> Sellers { get; set; }
     }
 }
