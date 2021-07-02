@@ -30,9 +30,9 @@ namespace OrdersUI
         private void InitializeComponent()
         {
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.deleteButton = new System.Windows.Forms.Button();
+            this.changeButton = new System.Windows.Forms.Button();
+            this.addButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,47 +54,47 @@ namespace OrdersUI
             this.dataGridView.Size = new System.Drawing.Size(1171, 444);
             this.dataGridView.TabIndex = 1;
             // 
-            // button3
+            // deleteButton
             // 
-            this.button3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.button3.Location = new System.Drawing.Point(695, 458);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(109, 33);
-            this.button3.TabIndex = 6;
-            this.button3.Text = "Удалить";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.deleteButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.deleteButton.Location = new System.Drawing.Point(695, 458);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(109, 33);
+            this.deleteButton.TabIndex = 6;
+            this.deleteButton.Text = "Удалить";
+            this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
-            // button2
+            // changeButton
             // 
-            this.button2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.button2.Location = new System.Drawing.Point(518, 458);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(109, 33);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "Изменить";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.changeButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.changeButton.Location = new System.Drawing.Point(518, 458);
+            this.changeButton.Name = "changeButton";
+            this.changeButton.Size = new System.Drawing.Size(109, 33);
+            this.changeButton.TabIndex = 5;
+            this.changeButton.Text = "Изменить";
+            this.changeButton.UseVisualStyleBackColor = true;
+            this.changeButton.Click += new System.EventHandler(this.ChangeButton_Click);
             // 
-            // button1
+            // addButton
             // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.button1.Location = new System.Drawing.Point(335, 458);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(109, 33);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Добавить";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.addButton.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.addButton.Location = new System.Drawing.Point(335, 458);
+            this.addButton.Name = "addButton";
+            this.addButton.Size = new System.Drawing.Size(109, 33);
+            this.addButton.TabIndex = 4;
+            this.addButton.Text = "Добавить";
+            this.addButton.UseVisualStyleBackColor = true;
+            this.addButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
             // Catalog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1166, 503);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.deleteButton);
+            this.Controls.Add(this.changeButton);
+            this.Controls.Add(this.addButton);
             this.Controls.Add(this.dataGridView);
             this.Name = "Catalog";
             this.Text = "Catalog";
@@ -106,8 +106,8 @@ namespace OrdersUI
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridView;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button deleteButton;
+        private System.Windows.Forms.Button changeButton;
+        private System.Windows.Forms.Button addButton;
     }
 }
