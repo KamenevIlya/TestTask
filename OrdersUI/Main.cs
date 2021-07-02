@@ -14,7 +14,6 @@ namespace OrdersUI
         private Cart cart;
         private Seller seller;
         private Customer customer;
-        private Check check;
         private Sell sell;
         private List<Product> chosenProducts;
 
@@ -24,7 +23,6 @@ namespace OrdersUI
             db = new OrdersContext();
             cart = new Cart(customer);
             seller = new Seller();
-            check = new Check();
             sell = new Sell();
             chosenProducts = new List<Product>();
             comboBox1.Items.AddRange(db.Sellers.ToArray());
@@ -83,9 +81,7 @@ namespace OrdersUI
         
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            seller.Name = comboBox1.SelectedItem.ToString();
-            check.Seller = seller;
-            sell.Check = check;
+            seller = db.Sellers.AsEnumerable().FirstOrDefault(p => p.Name == comboBox1.SelectedItem.ToString());
         }
 
         private void productsChoosingButton_Click(object sender, EventArgs e)
@@ -96,6 +92,8 @@ namespace OrdersUI
                 if (productChoosingForm.ShowDialog() != DialogResult.OK)
                 {
                     List<Product> products = new List<Product>();
+                    cart = productChoosingForm.Cart;
+                    amountLabel.Text = $"Итого: {cart.Amount}";
                     products = productChoosingForm.Cart.GetAll();
                     foreach (var product in products)
                     {
@@ -112,17 +110,27 @@ namespace OrdersUI
 
         private void payButton_Click(object sender, EventArgs e)
         {
-            Check check = new Check()
+            if (seller.Name==null)
             {
-                SellerId = this.seller.SellerId,
-                Seller = this.seller,
-                CustomerId = cart.Customer.CustomerId,
-                Customer = cart.Customer,
-                Created = DateTime.Now
-            };
-            db.Checks.Add(check);
-            db.SaveChanges();
-            productsListBox.Items.Clear();
+                MessageBox.Show($"Пожалуйста, выберите продавца!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                Check check = new Check()
+                {
+                    SellerId = seller.SellerId,
+                    Seller = seller,
+                    CustomerId = cart.Customer.CustomerId,
+                    Customer = cart.Customer,
+                    Created = DateTime.Now,
+                    Amount=cart.Amount
+                };
+                db.Checks.Add(check);
+                db.SaveChanges();
+                productsListBox.Items.Clear();
+                amountLabel.Text = "Итого:";
+                MessageBox.Show("Заказ оформлен!","", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void logInLinkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

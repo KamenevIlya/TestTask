@@ -42,6 +42,7 @@ namespace OrdersUI
             this.payButton = new System.Windows.Forms.Button();
             this.logInLinkLabel1 = new System.Windows.Forms.LinkLabel();
             this.productsListBox = new System.Windows.Forms.ListBox();
+            this.amountLabel = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,7 +53,7 @@ namespace OrdersUI
             this.сущностиToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(615, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(615, 25);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -64,7 +65,7 @@ namespace OrdersUI
             this.ordersLogЗаказовToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.сущностиToolStripMenuItem.Name = "сущностиToolStripMenuItem";
-            this.сущностиToolStripMenuItem.Size = new System.Drawing.Size(80, 26);
+            this.сущностиToolStripMenuItem.Size = new System.Drawing.Size(80, 21);
             this.сущностиToolStripMenuItem.Text = "Сущности";
             // 
             // productsToolStripMenuItem1
@@ -165,11 +166,22 @@ namespace OrdersUI
             this.productsListBox.Size = new System.Drawing.Size(302, 292);
             this.productsListBox.TabIndex = 18;
             // 
+            // amountLabel
+            // 
+            this.amountLabel.AutoSize = true;
+            this.amountLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.amountLabel.Location = new System.Drawing.Point(333, 465);
+            this.amountLabel.Name = "amountLabel";
+            this.amountLabel.Size = new System.Drawing.Size(79, 25);
+            this.amountLabel.TabIndex = 19;
+            this.amountLabel.Text = "Итого: ";
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(615, 550);
+            this.Controls.Add(this.amountLabel);
             this.Controls.Add(this.productsListBox);
             this.Controls.Add(this.logInLinkLabel1);
             this.Controls.Add(this.payButton);
@@ -202,6 +214,7 @@ namespace OrdersUI
         private System.Windows.Forms.Button payButton;
         private System.Windows.Forms.LinkLabel logInLinkLabel1;
         private System.Windows.Forms.ListBox productsListBox;
+        private System.Windows.Forms.Label amountLabel;
     }
 }
 
